@@ -1,12 +1,21 @@
-from integrations.camara.client import CamaraClient
+from integrations.camara import Camara
 
-with CamaraClient() as client:
+with Camara() as camara:
 
-    response = client.get(
-        endpoint="deputados",
+    deputado = camara.deputado.obter(204379)
+
+    despesas = camara.deputado.despesas(
+        deputado_id=204379,
         params={
-            "itens": 1
+            "ano": 2026,
+            "itens": 10
         }
     )
 
-    print(response)
+    print("Deputado:", deputado.nomeCivil, "idLegislatura:", deputado.ultimoStatus.idLegislatura)
+
+    print("\nResposta completa das despesas:")
+    print(despesas)
+
+    print("\nDados:")
+    print(despesas.get("dados"))
