@@ -18,7 +18,7 @@ with CamaraClient() as client:
         total += 1
 
         if total <= 5:
-            print(deputado.nome)
+            print(f'ID: {deputado.id}, Nome: {deputado.nome}, Partido: {deputado.siglaPartido}, UF: {deputado.siglaUf}')
 
     print(f"Total percorrido: {total}")
 
