@@ -33,7 +33,7 @@ class HTTPClient:
         self,
         endpoint: str,
         params: dict[str, Any] | None = None
-    ) -> dict[str, Any]:
+    ) -> list[dict[str, Any]]:
 
         retry_status_codes = {429, 502, 503, 504}
 

@@ -34,7 +34,7 @@ class PortalTransparenciaClient:
         self,
         endpoint: str,
         params: dict[str, Any] | None = None
-    ) -> dict[str, Any]:
+    ) -> list[dict[str, Any]]:
 
         return self.http.get(
             endpoint=endpoint,

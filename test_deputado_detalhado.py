@@ -8,7 +8,20 @@ from integrations.camara.mappers.deputado_detalhado_mapper import (
 deputado_id = 204379
 
 with CamaraClient() as client:
+    
+    
+    list_deputados = client.get(
+        endpoint="deputados",
+        params={
+            "itens": 100,
+            "pagina": 1
+        }
+    )
 
+    print("Lista de deputados (BA, PDT):")
+    for deputado in list_deputados["dados"]:
+        print(f'ID: {deputado["id"]}, Nome: {deputado["nome"]}, Partido: {deputado["siglaPartido"]}, UF: {deputado["siglaUf"]}')
+    
     response = client.get(
         endpoint=f"deputados/{deputado_id}"
     )
